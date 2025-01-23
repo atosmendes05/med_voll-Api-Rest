@@ -3,6 +3,7 @@ package med.voll.api.domain.model;
 
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
+import med.voll.api.domain.DTO.DadosEndereco;
 import med.voll.api.domain.DTO.DadosPaciente;
 
 import java.util.List;
@@ -34,6 +35,14 @@ public class Paciente {
         this.telefone = paciente.telefone();
         this.cpf = paciente.cpf();
         this.endereco = new Endereco(paciente.endereco());
+    }
+
+    public Paciente(Boolean ativo, String nome, String email, String cpf, DadosEndereco endereco) {
+        this.ativo = ativo;
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.endereco = new Endereco(endereco);
     }
 
     @Override

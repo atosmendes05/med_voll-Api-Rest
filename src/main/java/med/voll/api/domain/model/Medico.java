@@ -3,6 +3,7 @@ package med.voll.api.domain.model;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.EqualsAndHashCode;
+import med.voll.api.domain.DTO.DadosEndereco;
 import med.voll.api.domain.DTO.DadosMedico;
 import med.voll.api.domain.DTO.DadosUpdateMedico;
 
@@ -40,6 +41,15 @@ public class Medico {
         this.crm = dados.crm();
         this.endereco = new Endereco(dados.endereco());
         this.especialidade = Especialidade.fromValue(String.valueOf(dados.especialidade()));
+    }
+
+    public Medico(Boolean ativo, String nome, String email, String crm, Especialidade especialidade, DadosEndereco endereco) {
+        this.ativo = ativo;
+        this.nome = nome;
+        this.email = email;
+        this.crm = crm;
+        this.especialidade = especialidade;
+        this.endereco = new Endereco(endereco);
     }
 
     public void updateMedico(@Valid DadosUpdateMedico dados) {

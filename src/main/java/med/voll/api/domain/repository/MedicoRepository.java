@@ -19,7 +19,7 @@ public interface MedicoRepository extends JpaRepository<Medico,Long> {
     Optional<Medico> buscaMedicoPorNome(String nome);
 
     @Query("SELECT m FROM Medico m WHERE m.ativo = true and m.especialidade = :especialidade and m.id not in (select c.medico.id from Consulta c where c.data = :data) order by RANDOM() limit 1")
-    Medico escolheMedicoPorEspecialidade(Especialidade especialidaade , LocalDateTime data);
+    Medico escolheMedicoPorEspecialidade(Especialidade especialidade, LocalDateTime data);
 
     @Query("SELECT COUNT(m) > 0 FROM Medico m WHERE m.id = :id AND m.ativo = true")
     Boolean findAtivoById(Long id);
