@@ -9,4 +9,5 @@ public record DadosDetalhadosConsulta(Long id, Long idMedico, Long idPaciente, L
     public DadosDetalhadosConsulta(Consulta consulta) {
         this(consulta.getId(), consulta.getMedico().getId(), consulta.getPaciente().getId(),consulta.getData());
     }
+
 }
